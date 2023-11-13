@@ -18,34 +18,34 @@ int _printf(const char *format, ...)
 	while (*format != '\0')
 	{
 		if (*format == '%')
-		{
-			format++;
+		{ format++;
 			switch (*format)
-			{
-				case 'c':
+			{ case 'c':
 					_putchar(va_arg(print, int));
 					b++;
 					break;
 				case 's':
 					s = va_arg(print, char*);
+					if (s == NULL)
+					{ _putchar('(');
+						_putchar('n');
+						_putchar('u');
+						_putchar('l');
+						_putchar('l');
+						_putchar(')');
+						break; }
 					while (*s != '\0')
-					{
-						_putchar(*(s));
+					{ _putchar(*(s));
 						s++;
-						c++;
-					}
+						c++; }
 					break;
 				case '%':
 					_putchar('%');
-					break;
-			}
-		}
-		else
+					break; }
+		} else
 			_putchar(*format);
 		format++;
 		a++;
-	}
-	va_end(print);
+	} va_end(print);
 	return (a + b + c);
-
 }
