@@ -11,7 +11,8 @@ int _printf(const char *format, ...)
 	int a = 0, b = 0, c = 0;
 	char *s;
 	va_list print;
-	va_start (print, format);
+
+	va_start(print, format);
 	while (format == NULL)
 		return (0);
 	while (*format != '\0')
@@ -34,6 +35,9 @@ int _printf(const char *format, ...)
 						c++;
 					}
 					break;
+				case '%':
+					_putchar('%');
+					break;
 			}
 		}
 		else
@@ -42,7 +46,6 @@ int _printf(const char *format, ...)
 		a++;
 	}
 	va_end(print);
-	_putchar('\n');
 	return (a + b + c);
 
 }
