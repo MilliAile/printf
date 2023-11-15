@@ -25,7 +25,7 @@ int _printf(const char *format, ...)
 		{ format++;
 			switch (*format)
 			{ case 'c':
-				ch = va_arg(print, int);
+				ch = (char)va_arg(print, int);
 				write(1, &ch, 1);
 					b++;
 					break;
@@ -42,7 +42,12 @@ int _printf(const char *format, ...)
 					break;
 				case '%':
 					write(1, "%", 1);
-					break; }
+					break;
+				default:
+					write(1,"%", 1);
+					write(1,format, 1);
+					break;
+		       }
 		} else
 			write(1, format, 1);
 		format++;
