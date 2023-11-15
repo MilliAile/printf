@@ -2,12 +2,10 @@
 #include "main.h"
 #include <stddef.h>
 #include <unistd.h>
-#include <string.h>
 /**
  * _printf - function to print characters and strings
  * @format: a character string
  * Return: the number of characters printed out
- * Discription: function to print characters and strings
  */
 int _printf(const char *format, ...)
 {
@@ -39,19 +37,16 @@ int _printf(const char *format, ...)
 					{ write(1, s, 1);
 						s++;
 						c++; }
-					break;
 				case '%':
 					write(1, "%", 1);
 					break;
 				default:
-					write(1,"%", 1);
-					write(1,format, 1);
-					break;
-		       }
+					write(1, "%", 2);
+					write(1, format, 1);
+					break; }
 		} else
 			write(1, format, 1);
 		format++;
 		a++;
 	} va_end(print);
-	return (a + b + c);
-}
+	return (a + b + c); }
