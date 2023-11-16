@@ -16,7 +16,7 @@ int _printf(const char *format, ...)
 
 	va_start(print, format);
 	while (format == NULL)
-		return (0);
+		return (-1);
 	while (*format != '\0')
 	{
 		if (*format == '%')
@@ -37,11 +37,12 @@ int _printf(const char *format, ...)
 					{ write(1, s, 1);
 						s++;
 						c++; }
+					break;
 				case '%':
 					write(1, "%", 1);
 					break;
 				default:
-					write(1, "%", 2);
+					write(1, "%", 1);
 					write(1, format, 1);
 					break; }
 		} else
