@@ -25,8 +25,8 @@ int _printf(const char *format, ...)
 			switch (*format)
 			{
 				case 'c':
-					ch = (char)va_arg(print, int);
-					write(1, &ch, 1);
+					ch = va_arg(print, int);
+					write(1, &ch, sizeof(char));
 					b++;
 					break;
 				case 's':
