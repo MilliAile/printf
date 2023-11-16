@@ -29,14 +29,15 @@ int _printf(const char *format, ...)
 					break;
 				case 's':
 					s = va_arg(print, char*);
-					if (s == NULL)
+					c = str(s);
+					/*if (s == NULL)
 					{
 						write(1, "(null)", 6);
 						break; }
 					while (*s != '\0')
 					{ write(1, s, 1);
 						s++;
-						c++; }
+						c++; }*/
 					break;
 				case '%':
 					write(1, "%", 1);
